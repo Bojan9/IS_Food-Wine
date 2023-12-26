@@ -1,0 +1,110 @@
+﻿@model bojan_recipe.Models.Recipe
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Recipe</h1>
+
+<hr />
+<div class="col-md-6">
+    <form asp-action="Create">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <input type="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Preparation" class="control-label"></label>
+            <textarea asp-for="Preparation" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Preparation" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ingredients" class="control-label"></label>
+            <textarea asp-for="Ingredients" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="Ingredients" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="control-label">Image Url</label>
+            <input asp-for="ImageUrl" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CaloryCount" class="control-label">Calory Count</label>
+            <input asp-for="CaloryCount" class="form-control" />
+            <span asp-validation-for="CaloryCount" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Type" class="control-label">Type of Recipe</label>
+            <select asp-for="Type" asp-items="ViewBag.TypeList" class="form-control"></select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+        <div id="isAlcoholicContainer" style="display: none; margin-top:10px">
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAlcoholic" /> Is it Alcoholic
+                </label>
+            </div>
+        </div>
+        <div id="isFoodContainer" style="display: none;">
+            <div class="form-group">
+                <label asp-for="FoodType" class="control-label">Type of Food</label>
+                <select asp-for="FoodType" asp-items="ViewBag.FoodTypeList" class="form-control"></select>
+                <span asp-validation-for="FoodType" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    // Function to show/hide the IsAlcoholic field based on the selected Type
+    function toggleIsAlcoholicField() {
+        var typeDropdown = document.getElementById("Type");
+        var isAlcoholicContainer = document.getElementById("isAlcoholicContainer");
+
+        if (typeDropdown.value === "Drink") {
+            isAlcoholicContainer.style.display = "block";
+        } else {
+            isAlcoholicContainer.style.display = "none";
+        }
+    }
+
+    // Function to show/hide the Food field based on the selected Type
+    function toggleFoodField() {
+        var typeDropdown = document.getElementById("Type");
+        var isFoodContainer = document.getElementById("isFoodContainer");
+
+        if (typeDropdown.value === "Food") {
+            isFoodContainer.style.display = "block";
+        } else {
+            isFoodContainer.style.display = "none";
+        }
+    }
+
+    // Attach the toggle function to the change event of the Type dropdown
+    document.getElementById("Type").addEventListener("change", toggleIsAlcoholicField);
+    document.getElementById("Type").addEventListener("change", toggleFoodField);
+
+    // Call the function initially to set the initial state
+    toggleIsAlcoholicField();
+    toggleFoodField();
+</script>

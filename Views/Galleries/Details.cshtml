@@ -1,0 +1,44 @@
+﻿@model bojan_recipe.Models.Gallery
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .big-header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .centered-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="big-header">
+    @Html.DisplayFor(model => model.GalleryName)
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-12">
+            <img src="@Model.GalleryImageUrl" class="centered-image" alt="Recipe Image">
+        </dd>
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GalleryDescription)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.GalleryId">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model?.GalleryId" class="btn btn-danger">Delete</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

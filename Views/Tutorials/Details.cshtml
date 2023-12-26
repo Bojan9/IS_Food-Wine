@@ -1,0 +1,58 @@
+﻿@model bojan_recipe.Models.Tutorial
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .big-header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<div class="big-header">
+    @Html.DisplayFor(model => model.TutorialName)
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-12">
+            <div class="video-container">
+                <iframe src="@Model.TutorialVideoUrl" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </dd>
+        <dt class="col-sm-2">Description</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TutorialDescription)
+        </dd>
+        <dt class="col-sm-2">Difficulty</dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.TutorialId" class="btn btn-primary">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model?.TutorialId" class="btn btn-danger">Delete</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

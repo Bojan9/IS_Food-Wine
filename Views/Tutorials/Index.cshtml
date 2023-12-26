@@ -1,0 +1,80 @@
+﻿@model IEnumerable<bojan_recipe.Models.Tutorial>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .card-body {
+        height: 180px;
+    }
+
+    .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5; /* Adjust the number of lines to display */
+        -webkit-box-orient: vertical;
+    }
+
+    .card {
+        margin-bottom: 40px;
+    }
+
+    .buttons {
+        padding-bottom: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Tutorials and Videos</h1>
+        </div>
+        <div class="col-md-8 text-right">
+            <form asp-action="Index" method="get" class="form-inline">
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <input type="text" name="searchString" class="form-control" placeholder="Search by name">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <select name="filterType" class="form-control">
+                            <option value="">All</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <button type="submit" class="btn btn-primary mb-2" style="width: 100%">Search</button>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <a class="btn btn-primary" style="width: 100%" asp-action="Create">Create New Tutorial</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr />
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 mb-6">
+            <div class="card">
+                    <iframe height="300px" class="embed-responsive-item" src="@item.TutorialVideoUrl" frameborder="0" allowfullscreen></iframe>
+                <div class="card-body">
+                    <h5 class="card-title">@item.TutorialName</h5>
+                    <p class="card-text">@Html.Raw(System.Text.RegularExpressions.Regex.Replace(item.TutorialDescription, @"<[^>]+>", string.Empty).Split(' ').Length > 30 ? string.Join(" ", item.TutorialDescription.Split(' ').Take(30)) + "..." : item.TutorialDescription)</p>
+                    <p class="card-text"><strong>Category:</strong> @item.Category</p>
+                </div>
+                <div class="text-center buttons">
+                    <a href="@Url.Action("Details", new { id = item.TutorialId })" class="btn btn-primary">Details</a>
+                    <a href="@Url.Action("Edit", new { id = item.TutorialId })" class="btn btn-secondary">Edit</a>
+                    <a href="@Url.Action("Delete", new { id = item.TutorialId })" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

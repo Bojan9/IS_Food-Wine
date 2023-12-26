@@ -1,0 +1,41 @@
+﻿@model bojan_recipe.Models.Gallery
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GalleryId" />
+            <input type="hidden" asp-for="CreatedBy" value="@User.Identity.Name" />
+            <div class="form-group">
+                <label asp-for="GalleryName" class="control-label">Name</label>
+                <input asp-for="GalleryName" class="form-control" />
+                <span asp-validation-for="GalleryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GalleryDescription" class="control-label">Description</label>
+                <input asp-for="GalleryDescription" class="form-control" />
+                <span asp-validation-for="GalleryDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GalleryImageUrl" class="control-label">Image Url</label>
+                <input asp-for="GalleryImageUrl" class="form-control" />
+                <span asp-validation-for="GalleryImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-top: 20px">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
