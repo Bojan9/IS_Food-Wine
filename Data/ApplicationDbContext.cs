@@ -13,5 +13,7 @@ namespace bojan_recipe.Data
         public DbSet<bojan_recipe.Models.Recipe>? Recipe { get; set; }
         public DbSet<bojan_recipe.Models.Tutorial>? Tutorial { get; set; }
         public DbSet<bojan_recipe.Models.Gallery>? Gallery { get; set; }
+        public DbSet<bojan_recipe.Models.Gallery>? Blog { get; set; }
+        public DbSet<bojan_recipe.Models.Blog>? Blog_1 { get; set; }
     }
 }
