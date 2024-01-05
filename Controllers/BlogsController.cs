@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using bojan_recipe.Data;
 using bojan_recipe.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace bojan_recipe.Controllers
 {
@@ -22,9 +22,9 @@ namespace bojan_recipe.Controllers
         // GET: Blogs
         public async Task<IActionResult> Index()
         {
-              return _context.Blog_1 != null ? 
-                          View(await _context.Blog_1.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Blog_1'  is null.");
+            return _context.Blog_1 != null ?
+                View(await _context.Blog_1.ToListAsync()) :
+                Problem("Entity set 'ApplicationDbContext.Blog_1'  is null.");
         }
 
         // GET: Blogs/Details/5
@@ -46,8 +46,15 @@ namespace bojan_recipe.Controllers
         }
 
         // GET: Blogs/Create
+        [Authorize]
         public IActionResult Create()
         {
+            // Check if the email of the user is admin@mail.com
+            if (!User.Identity.Name.Equals("admin@mail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return Forbid();
+            }
+
             return View();
         }
 
@@ -56,8 +63,15 @@ namespace bojan_recipe.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,ImageUrl")] Blog blog)
         {
+            // Check if the email of the user is admin@mail.com
+            if (!User.Identity.Name.Equals("admin@mail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return Forbid();
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(blog);
@@ -68,6 +82,7 @@ namespace bojan_recipe.Controllers
         }
 
         // GET: Blogs/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Blog_1 == null)
@@ -80,6 +95,13 @@ namespace bojan_recipe.Controllers
             {
                 return NotFound();
             }
+
+            // Check if the email of the user is admin@mail.com
+            if (!User.Identity.Name.Equals("admin@mail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return Forbid();
+            }
+
             return View(blog);
         }
 
@@ -88,11 +110,18 @@ namespace bojan_recipe.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ImageUrl")] Blog blog)
         {
             if (id != blog.Id)
             {
                 return NotFound();
+            }
+
+            // Check if the email of the user is admin@mail.com
+            if (!User.Identity.Name.Equals("admin@mail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return Forbid();
             }
 
             if (ModelState.IsValid)
@@ -119,6 +148,7 @@ namespace bojan_recipe.Controllers
         }
 
         // GET: Blogs/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Blog_1 == null)
@@ -133,12 +163,19 @@ namespace bojan_recipe.Controllers
                 return NotFound();
             }
 
+            // Check if the email of the user is admin@mail.com
+            if (!User.Identity.Name.Equals("admin@mail.com", StringComparison.OrdinalIgnoreCase))
+            {
+                return Forbid();
+            }
+
             return View(blog);
         }
 
         // POST: Blogs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Blog_1 == null)
@@ -150,14 +187,14 @@ namespace bojan_recipe.Controllers
             {
                 _context.Blog_1.Remove(blog);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool BlogExists(int id)
         {
-          return (_context.Blog_1?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Blog_1?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
