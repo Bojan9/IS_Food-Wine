@@ -18,6 +18,8 @@ Naša aplikacija posameznikom omogoča ustvarjanje, skupno rabo in raziskovanje 
 - Blog: določeni uporabniki imajo lahko svoj blog, kjer lahko objavijo svoj recept ali dajo kakšen nasvet.
 - Uporabniki so razdeljeni v 3 kategorije: Neregistrirani uporabniki (lahko si samo ogledajo recepte, slike in bloge, brez ustvarjanja novih), registrirani uporabniki (lahko ustvarjajo nove recepte, ne morejo pa ustvariti bloga in ne morejo brisati ali spreminjati receptov, ki niso sami). in skrbniki (imajo vse možnosti kot navadni uporabniki, poleg tega lahko spreminjajo ali brišejo recepte drugih uporabnikov in imajo svoj blog).
 
+## Posnetki zaslona spletne strani
+
 ![1](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/de203adb-4571-4b7d-a945-9f6e5c08c43c)
 ![3](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/e0a9bf4a-550c-44ee-be68-1c50969e37b0)
 ![2](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/8394de74-c001-41d5-a3f9-3c8cb712642b)
@@ -26,3 +28,6 @@ Naša aplikacija posameznikom omogoča ustvarjanje, skupno rabo in raziskovanje 
 ![7](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/331e6e9e-8542-4804-a23a-996474a36f31)
 ![6](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/ec531773-0769-4ca0-a4c8-17ee0c53a7e9)
 ![5](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/097501ee-4068-4e49-9ab7-3a40652675fa)
+
+## Database schema
+![asd](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/11cbd56c-9c88-484d-9123-4bb2ee68b0a7)
