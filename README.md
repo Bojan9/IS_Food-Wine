@@ -18,7 +18,7 @@ Naša aplikacija posameznikom omogoča ustvarjanje, skupno rabo in raziskovanje 
 - Blog: določeni uporabniki imajo lahko svoj blog, kjer lahko objavijo svoj recept ali dajo kakšen nasvet.
 - Uporabniki so razdeljeni v 3 kategorije: Neregistrirani uporabniki (lahko si samo ogledajo recepte, slike in bloge, brez ustvarjanja novih), registrirani uporabniki (lahko ustvarjajo nove recepte, ne morejo pa ustvariti bloga in ne morejo brisati ali spreminjati receptov, ki niso sami). in skrbniki (imajo vse možnosti kot navadni uporabniki, poleg tega lahko spreminjajo ali brišejo recepte drugih uporabnikov in imajo svoj blog).
 
-## Posnetki zaslona spletne strani
+## Spletna aplikacija
 
 ![1](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/de203adb-4571-4b7d-a945-9f6e5c08c43c)
 ![3](https://github.com/Bojan9/IS_Food-Wine/assets/22836719/e0a9bf4a-550c-44ee-be68-1c50969e37b0)
