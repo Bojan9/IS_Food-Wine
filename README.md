@@ -2,8 +2,8 @@
 
 Aplikacija ASP.NET izdelana za potrebe predmeta Informacijski sistemi na Fakulteti za računalništvo in informatiko Univerze v Ljubljani.
 
-63210453 Bojan Spasovski <br>
-63220292 Jakob Simčič
+63210453 Bojan Spasovski (Spletna in mobilna aplikacija in podatkovna baza) <br>
+63220292 Jakob Simčič (Spletna storitev in Microsoft Azure)
 
 Naša aplikacija posameznikom omogoča ustvarjanje, skupno rabo in raziskovanje različnih kulinaričnih receptov. Tukaj je pregled njegovih ključnih funkcij:
 
@@ -18,7 +18,7 @@ Naša aplikacija posameznikom omogoča ustvarjanje, skupno rabo in raziskovanje 
 - Blog: določeni uporabniki imajo lahko svoj blog, kjer lahko objavijo svoj recept ali dajo kakšen nasvet.
 - Uporabniki so razdeljeni v 3 kategorije: Neregistrirani uporabniki (lahko si samo ogledajo recepte, slike in bloge, brez ustvarjanja novih), registrirani uporabniki (lahko ustvarjajo nove recepte, ne morejo pa ustvariti bloga in ne morejo brisati ali spreminjati receptov, ki niso sami). in skrbniki (imajo vse možnosti kot navadni uporabniki, poleg tega lahko spreminjajo ali brišejo recepte drugih uporabnikov in imajo svoj blog).
 
-Users:
+## Users:
 
 - user
   - email: user@mail.com
@@ -29,6 +29,10 @@ Users:
 - admin
   - email: admin@mail.com
   - pass: Admin123!
+ 
+## Microsoft Azure URL
+
+foodandwine.azurewebsites.net
 
 ## Spletna aplikacija
 
